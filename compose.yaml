@@ -1,0 +1,70 @@
+
+secrets:
+  db_root_password:
+    file: ./secrets/db_root_password.txt
+  db_app_password:
+    file: ./secrets/db_app_password.txt
+
+services:
+  js:
+    build:
+      context: ./docker/js
+      args:
+        - UID=1000
+        - GID=1000
+    # user: ${HOST_UID}:${HOST_GID}
+    environment:
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./front:/home/js
+    tty: true
+    ports:
+      - ${BIND_IP:-127.0.0.1}:5173:5173
+  db:
+    build:
+      context: ./docker/db
+      args:
+        - UID=1000
+        - GID=1000
+    # user: ${HOST_UID}:${HOST_GID}
+    environment:
+      MARIADB_ROOT_PASSWORD: tmcit
+      MARIADB_DATABASE: LESSON
+      MARIADB_USER: tmcit
+      MARIADB_PASSWORD: tmcit
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./data/db/mysql:/var/lib/mysql
+    tty: true
+
+  # web:
+  #   build:
+  #     context: ./docker/web
+  #     args:
+  #       - UID=${WEB_USER_UID}
+  #       - GID=${WEB_USER_GID}
+  #   hostname: web
+  #   tty: true
+  #   user: ${WEB_USER_UID}:${WEB_USER_GID}
+  #   environment:
+  #     TZ: ${APP_TZ}
+  #   ports:
+  #     - ${BIND_IP}:${HTTP_PORT}:80
+  #     - ${BIND_IP}:${HTTPS_PORT}:443
+  #   volumes:
+  #     # conf
+  #     - ./docker/web/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./docker/web/conf.d:/etc/nginx/conf.d
+  #     - ./docker/web/parts:/etc/nginx/parts
+  #     # front root
+  #     - ./front-admin/webroot:/usr/share/nginx/webroot
+  #     # log
+  #     - ./logs/web:/tmp/web
+  #   cap_drop:
+  #     - ALL
+  #   cap_add:
+  #     - NET_BIND_SERVICE
+  #     # - CHOWN
+  #   networks:
+  #     - base-net
+  #   <<: *shared_env
