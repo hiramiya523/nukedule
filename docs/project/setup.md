@@ -33,8 +33,14 @@ Install community-maintained integrations:
   https://github.com/svelte-add/svelte-add
 ```
 
-cd app
-bun install
+
+bun i -D @skeletonlabs/skeleton @skeletonlabs/tw-plugin
+bunx svelte-add@latest tailwindcss
 
 ** To run the dev server with Node.js instead of Bun, you can omit the --bun flag.
 bun --bun run dev
+bun run dev -- --open
+
+
+諦め
+pnpm create skeleton-app@latest skeleton-app

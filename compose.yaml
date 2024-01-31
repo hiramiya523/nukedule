@@ -16,26 +16,26 @@ services:
     environment:
       TZ: 'Asia/Tokyo'
     volumes:
-      - ./front:/home/js
+      - ./front:/home/node
     tty: true
     ports:
       - ${BIND_IP:-127.0.0.1}:5173:5173
-  db:
-    build:
-      context: ./docker/db
-      args:
-        - UID=1000
-        - GID=1000
-    # user: ${HOST_UID}:${HOST_GID}
-    environment:
-      MARIADB_ROOT_PASSWORD: tmcit
-      MARIADB_DATABASE: LESSON
-      MARIADB_USER: tmcit
-      MARIADB_PASSWORD: tmcit
-      TZ: 'Asia/Tokyo'
-    volumes:
-      - ./data/db/mysql:/var/lib/mysql
-    tty: true
+  # db:
+  #   build:
+  #     context: ./docker/db
+  #     args:
+  #       - UID=1000
+  #       - GID=1000
+  #   # user: ${HOST_UID}:${HOST_GID}
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: tmcit
+  #     MARIADB_DATABASE: LESSON
+  #     MARIADB_USER: tmcit
+  #     MARIADB_PASSWORD: tmcit
+  #     TZ: 'Asia/Tokyo'
+  #   volumes:
+  #     - ./data/db/mysql:/var/lib/mysql
+  #   tty: true
 
   # web:
   #   build:
