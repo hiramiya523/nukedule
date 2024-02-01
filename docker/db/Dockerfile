@@ -130,7 +130,7 @@ RUN set -ex; \
 
 VOLUME /var/lib/mysql
 COPY healthcheck.sh /usr/local/bin/healthcheck.sh
-COPY --chmod=744 docker-entrypoint.sh /usr/local/bin/
+COPY --chmod=777 docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 3306
