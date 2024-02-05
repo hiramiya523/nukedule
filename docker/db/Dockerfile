@@ -1,5 +1,4 @@
 # vim:set ft=dockerfile:
-# FROM ubuntu:jammy
 
 # bookworm-slim
 FROM debian@sha256:d6a343a9b7faf367bd975cadb5c9af51874a8ecf1a2b2baa96877d578ac96722
