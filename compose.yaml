@@ -16,7 +16,7 @@ services:
     environment:
       TZ: 'Asia/Tokyo'
     volumes:
-      - ./front:/home/node
+      - ./front:/home/node/front
     tty: true
     ports:
       - ${BIND_IP:-127.0.0.1}:5173:5173

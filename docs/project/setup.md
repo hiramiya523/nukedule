@@ -43,4 +43,16 @@ bun run dev -- --open
 
 
 諦め
-pnpm create skeleton-app@latest skeleton-app
+
+
+
+# shadcn
+
+pnpm create svelte@latest front
+pnpm i
+pnpm run dev -- --open
+
+
+# trpc
+pnpm i trpc-sveltekit @trpc/server @trpc/client zod
+zodはタイプチェックに必須？推奨っぽい。
