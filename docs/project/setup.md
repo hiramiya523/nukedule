@@ -54,5 +54,11 @@ pnpm run dev -- --open
 
 
 # trpc
-pnpm i trpc-sveltekit @trpc/server @trpc/client zod
-zodはタイプチェックに必須？推奨っぽい。
+  pnpm i  @trpc/server @trpc/client zod delay
+  <!-- npm install --save @trpc/client @trpc/server -->
+  ※ trpc-sveltekit はやめ。ラッピングしているだけだし、知らんが型が合わなくなるらしい。
+  zodはタイプチェックに推奨っぽい。
+
+
+https://medium.com/@serpentarium13/how-to-use-trpc-in-your-sveltekit-project-if-youre-a-zoomer-fullstack-developer-b70823262324
+ npm i trpc-svelte-query @tanstack/svelte-query
